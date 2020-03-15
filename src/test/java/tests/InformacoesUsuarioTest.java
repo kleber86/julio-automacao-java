@@ -39,5 +39,8 @@ public class InformacoesUsuarioTest {
         WebElement me = navegador.findElement(By.className("me"));
         String textoLogado = me.getText();
         assertEquals("Hi, Julio", textoLogado);
+
+        //Fecha no navegador
+        navegador.quit();
     }
 }
