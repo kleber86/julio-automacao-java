@@ -9,7 +9,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -75,14 +77,21 @@ public class InformacoesUsuarioTest {
     @Test
     public void removerUmContatoDeUmUsuario(){
         // Clicar no elemento pelo xpath //span[text()="+5511444443333"]/following-sibling::a
-
+            navegador.findElement(By.xpath("//span[text()=\"+5511444443333\"]/following-sibling::a")).click();
         // Confirmar a janela javascript
+            navegador.switchTo().alert().accept();
 
         // Validar que a mensagem apresentada foi "Rest in peace, dear phone!"
+        WebElement msgPop = navegador.findElement(By.id("toast-container"));
+        String msg = msgPop.getText();
+        assertEquals("Rest in peace, dear phone!", msg);
 
         // Aguardar até 10 segundos para que a janela desapareça
+        WebDriverWait aguardar = new WebDriverWait(navegador, 10);
+        aguardar.until(ExpectedConditions.stalenessOf(msgPop));
 
         // Clicar no link com texto "Logout"
+        navegador.findElement(By.linkText("Logout")).click();
     }
 
     @After
