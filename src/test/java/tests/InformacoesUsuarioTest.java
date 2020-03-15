@@ -45,10 +45,23 @@ public class InformacoesUsuarioTest {
         //Clicar no link com texto "SIGN IN"
         formSigninbox.findElement(By.linkText("SIGN IN")).click();
 
-        // Verificar se existe "Hi, Julio" no elemento a com classe me
-        WebElement me = navegador.findElement(By.className("me"));
-        String textoLogado = me.getText();
-        assertEquals("Hi, Julio", textoLogado);
+        // Clicar no link que possui a classe "me"
+
+        // Clicar no link que possui o texto "More data about you"
+
+        // Clicar no botão com texto "+ Add more data"
+
+        //Clicar no botão usando XPatch
+
+        // Identificar o pop onde está o formulario com id "addmoredate"
+
+        // No combo com name "type" clicar no "Phone"
+
+        // No campo de name contact digitar o valor "+551199999999"
+
+        // Clicar no link com texto "SAVE"
+
+        // Na menssagem de id "toast-container" validar o texto "You contact has been added!"
     }
 
     @After
