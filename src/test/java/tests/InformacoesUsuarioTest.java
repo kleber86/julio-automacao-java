@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.concurrent.TimeUnit;
 
@@ -46,22 +47,29 @@ public class InformacoesUsuarioTest {
         formSigninbox.findElement(By.linkText("SIGN IN")).click();
 
         // Clicar no link que possui a classe "me"
+        navegador.findElement(By.className("me")).click();
 
         // Clicar no link que possui o texto "More data about you"
+        navegador.findElement(By.linkText("MORE DATA ABOUT YOU")).click();
 
         // Clicar no botão com texto "+ Add more data"
-
-        //Clicar no botão usando XPatch
+        navegador.findElement(By.xpath("//button[@data-target=\"addmoredata\"]")).click();
 
         // Identificar o pop onde está o formulario com id "addmoredate"
-
-        // No combo com name "type" clicar no "Phone"
+       WebElement formAddmoredata = navegador.findElement(By.id("addmoredata"));
+       WebElement campoType = formAddmoredata.findElement(By.name("type"));
+       new Select(campoType).selectByVisibleText("Phone");
 
         // No campo de name contact digitar o valor "+551199999999"
+        formAddmoredata.findElement(By.name("contact")).sendKeys("+551199999999");
 
         // Clicar no link com texto "SAVE"
+        formAddmoredata.findElement(By.linkText("SAVE")).click();
 
         // Na menssagem de id "toast-container" validar o texto "You contact has been added!"
+        WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
+        String msg = mensagemPop.getText();
+        assertEquals("Your contact has been added!", msg);
     }
 
     @After
