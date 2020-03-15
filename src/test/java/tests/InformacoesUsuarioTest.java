@@ -28,10 +28,6 @@ public class InformacoesUsuarioTest {
 
         // Navegando até a pagina do Taskit
         navegador.get("http://www.juliodelima.com.br/taskit");
-    }
-
-    @Test
-    public void testAdicionarUmInformacaoDoUsuario(){
 
         // Clicar no link com texto "Sign in"
         navegador.findElement(By.linkText("Sign in")).click();
@@ -51,6 +47,10 @@ public class InformacoesUsuarioTest {
 
         // Clicar no link que possui o texto "More data about you"
         navegador.findElement(By.linkText("MORE DATA ABOUT YOU")).click();
+    }
+
+    //@Test
+    public void testAdicionarUmInformacaoDoUsuario(){
 
         // Clicar no botão com texto "+ Add more data"
         navegador.findElement(By.xpath("//button[@data-target=\"addmoredata\"]")).click();
@@ -70,6 +70,19 @@ public class InformacoesUsuarioTest {
         WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
         String msg = mensagemPop.getText();
         assertEquals("Your contact has been added!", msg);
+    }
+
+    @Test
+    public void removerUmContatoDeUmUsuario(){
+        // Clicar no elemento pelo xpath //span[text()="+5511444443333"]/following-sibling::a
+
+        // Confirmar a janela javascript
+
+        // Validar que a mensagem apresentada foi "Rest in peace, dear phone!"
+
+        // Aguardar até 10 segundos para que a janela desapareça
+
+        // Clicar no link com texto "Logout"
     }
 
     @After
