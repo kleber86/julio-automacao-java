@@ -14,12 +14,12 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import suporte.Generator;
 import suporte.Screenshot;
+import suporte.Web;
 
 import java.util.concurrent.TimeUnit;
 
@@ -33,15 +33,7 @@ public class InformacoesUsuarioTest {
 
     @Before
     public void setUp(){
-        // Informar onde está o chromediver na maquina local.
-        System.setProperty("webdriver.chrome.driver", "/home/kleber/Documents/drivers/chromedriver");
-
-        // Declara e instancia uma variavel para abertura do navegador
-        navegador = new ChromeDriver();
-        navegador.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
-        // Navegando até a pagina do Taskit
-        navegador.get("http://www.juliodelima.com.br/taskit");
+        navegador = Web.createChrome();
 
         // Clicar no link com texto "Sign in"
         navegador.findElement(By.linkText("Sign in")).click();
