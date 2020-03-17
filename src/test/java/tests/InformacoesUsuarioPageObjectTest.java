@@ -15,15 +15,25 @@ public class InformacoesUsuarioPageObjectTest {
         navegador = Web.createChrome();
     }
 
-    @Test
+    //@Test
     public void testAdicionarUmInformcaoAdicionalDoUsuario(){
         new LoginPage(navegador)
-                .clickSignIn()
-                .typeLogin("julio0001");
-
+                .clicarSignIn()
+                .digitarLogin("julio0001")
+                .digitarSenha("123456")
+                .clicarSignIn();
     }
-
-    @After
+    /* Abordagem Funcional */
+    @Test
+    public void testAdicionarUmInformcaoAdicionalDoUsuarioFuncional() {
+        new LoginPage(navegador)
+                .clicarSignIn()
+                .fazerLogin("julio0001", "123456")
+                .clicarMe()
+                .clicarAbaMoreDataAboutYou()
+                .clicarBotaioAddMoreDataAboutYou();
+    }
+    //@After
     public void tearDown(){
         navegador.quit();
     }
