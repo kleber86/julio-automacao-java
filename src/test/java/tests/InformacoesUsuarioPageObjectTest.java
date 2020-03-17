@@ -1,6 +1,7 @@
 package tests;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -15,25 +16,23 @@ public class InformacoesUsuarioPageObjectTest {
         navegador = Web.createChrome();
     }
 
-    //@Test
-    public void testAdicionarUmInformcaoAdicionalDoUsuario(){
-        new LoginPage(navegador)
-                .clicarSignIn()
-                .digitarLogin("julio0001")
-                .digitarSenha("123456")
-                .clicarSignIn();
-    }
     /* Abordagem Funcional */
     @Test
     public void testAdicionarUmInformcaoAdicionalDoUsuarioFuncional() {
-        new LoginPage(navegador)
+        String textoToast = new LoginPage(navegador)
                 .clicarSignIn()
                 .fazerLogin("julio0001", "123456")
                 .clicarMe()
                 .clicarAbaMoreDataAboutYou()
-                .clicarBotaioAddMoreDataAboutYou();
+                .clicarBotaioAddMoreDataAboutYou()
+                .adicionarContato("Phone", "+558190000000")
+                .capturaTextoToast();
+
+        Assert.assertEquals("Your contact has been added!",textoToast);
+
     }
-    //@After
+
+    @After
     public void tearDown(){
         navegador.quit();
     }
