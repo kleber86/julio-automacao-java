@@ -13,7 +13,7 @@ public class InformacoesUsuarioPageObjectTest {
 
     @Before
     public void setUp(){
-        navegador = Web.createChrome();
+        navegador = Web.createBrowserStack();
     }
 
     /* Abordagem Funcional */
